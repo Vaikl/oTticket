@@ -22,7 +22,7 @@ namespace oTicket.View
         public Authorizations()
         {
             InitializeComponent();
-           
+           //1234567890-=-098765456789o
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
