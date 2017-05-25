@@ -12,23 +12,18 @@ namespace oTicket
     using System;
     using System.Collections.Generic;
     
-    public partial class Doctors
+    public partial class Times
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Doctors()
+        public Times()
         {
-            this.DoctorTime = new HashSet<DoctorTime>();
+            this.DayTime = new HashSet<DayTime>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int IdHospitals { get; set; }
-        public int IdProffessions { get; set; }
-        public int IdDoctorsTime { get; set; }
+        public System.TimeSpan Time { get; set; }
     
-        public virtual Hospitals Hospitals { get; set; }
-        public virtual Proffessions Proffessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DoctorTime> DoctorTime { get; set; }
+        public virtual ICollection<DayTime> DayTime { get; set; }
     }
 }

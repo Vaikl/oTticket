@@ -13,7 +13,7 @@
         <TextBlock Text="Номер студенческого билета:" FontSize="25" Margin="70,45,88.4,237.8"/>
         <TextBlock Text="Пароль:" FontSize="25" Margin="205,132,217.4,149.8" />
         <TextBox x:Name="NumberBox" Margin="143,88,159,218" Text="1234567" />
-        <TextBox x:Name="PasswordBox" Margin="143,171,159,135" Text="Admin"/>
+        <TextBox x:Name="PasswordBox" Margin="143,171,159,135" Text="1234567"/>
         <Button x:Name="Enter" Content="Войти" FontSize="23" Margin="178,236,196,62" Click="Enter_Click"/>
     </Grid>
 </Page>

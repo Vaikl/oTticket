@@ -17,13 +17,13 @@ namespace oTicket
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proffessions()
         {
-            this.Offer = new HashSet<Offer>();
+            this.Doctors = new HashSet<Doctors>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Offer> Offer { get; set; }
+        public virtual ICollection<Doctors> Doctors { get; set; }
     }
 }

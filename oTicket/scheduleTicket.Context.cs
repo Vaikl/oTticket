@@ -13,10 +13,10 @@ namespace oTicket
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class scheduleEntities : DbContext
+    public partial class scheduleTicket : DbContext
     {
-        public scheduleEntities()
-            : base("name=scheduleEntities")
+        public scheduleTicket()
+            : base("name=scheduleTicket")
         {
         }
     
@@ -26,11 +26,14 @@ namespace oTicket
         }
     
         public virtual DbSet<Authorization> Authorization { get; set; }
+        public virtual DbSet<Days> Days { get; set; }
+        public virtual DbSet<DayTime> DayTime { get; set; }
         public virtual DbSet<Doctors> Doctors { get; set; }
+        public virtual DbSet<DoctorTime> DoctorTime { get; set; }
         public virtual DbSet<Hospitals> Hospitals { get; set; }
-        public virtual DbSet<Offer> Offer { get; set; }
+        public virtual DbSet<Offers> Offers { get; set; }
         public virtual DbSet<Proffessions> Proffessions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Time> Time { get; set; }
+        public virtual DbSet<Times> Times { get; set; }
     }
 }

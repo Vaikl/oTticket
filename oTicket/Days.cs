@@ -12,18 +12,18 @@ namespace oTicket
     using System;
     using System.Collections.Generic;
     
-    public partial class Time
+    public partial class Days
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Time()
+        public Days()
         {
-            this.Offer = new HashSet<Offer>();
+            this.DayTime = new HashSet<DayTime>();
         }
     
         public int Id { get; set; }
-        public System.TimeSpan Time1 { get; set; }
+        public System.DateTime Date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Offer> Offer { get; set; }
+        public virtual ICollection<DayTime> DayTime { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace oTicket.View
         {
             try
             {
-                using (scheduleEntities db = new scheduleEntities())
+                using (scheduleTicket db = new scheduleTicket())
                 {
                     foreach (Authorization item in db.Authorization)
                     {

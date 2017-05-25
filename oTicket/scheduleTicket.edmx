@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище scheduleTicketModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Days">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DayTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTime" Type="int" Nullable="false" />
+          <Property Name="IdDay" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdHospitals" Type="int" Nullable="false" />
+          <Property Name="IdProffessions" Type="int" Nullable="false" />
+          <Property Name="IdDoctorsTime" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DoctorTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDoctor" Type="int" Nullable="false" />
+          <Property Name="IdDayTime" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hospitals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdDoctorTime" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proffessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Times">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DayTime_Days">
+          <End Role="Days" Type="Self.Days" Multiplicity="1" />
+          <End Role="DayTime" Type="Self.DayTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Days">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DayTime">
+              <PropertyRef Name="IdDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DayTime_Times">
+          <End Role="Times" Type="Self.Times" Multiplicity="1" />
+          <End Role="DayTime" Type="Self.DayTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Times">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DayTime">
+              <PropertyRef Name="IdTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Hospitals">
+          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospitals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="IdHospitals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Proffessions">
+          <End Role="Proffessions" Type="Self.Proffessions" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proffessions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="IdProffessions" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorTime_DayTime">
+          <End Role="DayTime" Type="Self.DayTime" Multiplicity="1" />
+          <End Role="DoctorTime" Type="Self.DoctorTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorTime">
+              <PropertyRef Name="IdDayTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorTime_Doctors">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="DoctorTime" Type="Self.DoctorTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorTime">
+              <PropertyRef Name="IdDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_Authorization">
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
+          <End Role="Offers" Type="Self.Offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offers">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_DoctorTime">
+          <End Role="DoctorTime" Type="Self.DoctorTime" Multiplicity="1" />
+          <End Role="Offers" Type="Self.Offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offers">
+              <PropertyRef Name="IdDoctorTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище scheduleTicketModelContainer">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DayTime" EntityType="Self.DayTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorTime" EntityType="Self.DoctorTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hospitals" EntityType="Self.Hospitals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proffessions" EntityType="Self.Proffessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Times" EntityType="Self.Times" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DayTime_Days" Association="Self.FK_DayTime_Days">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="DayTime" EntitySet="DayTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DayTime_Times" Association="Self.FK_DayTime_Times">
+            <End Role="Times" EntitySet="Times" />
+            <End Role="DayTime" EntitySet="DayTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Hospitals" Association="Self.FK_Doctors_Hospitals">
+            <End Role="Hospitals" EntitySet="Hospitals" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Proffessions" Association="Self.FK_Doctors_Proffessions">
+            <End Role="Proffessions" EntitySet="Proffessions" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorTime_DayTime" Association="Self.FK_DoctorTime_DayTime">
+            <End Role="DayTime" EntitySet="DayTime" />
+            <End Role="DoctorTime" EntitySet="DoctorTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorTime_Doctors" Association="Self.FK_DoctorTime_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="DoctorTime" EntitySet="DoctorTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_Authorization" Association="Self.FK_Offers_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Offers" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_DoctorTime" Association="Self.FK_Offers_DoctorTime">
+            <End Role="DoctorTime" EntitySet="DoctorTime" />
+            <End Role="Offers" EntitySet="Offers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="scheduleTicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Offers" Relationship="Self.FK_Offers_Authorization" FromRole="Authorization" ToRole="Offers" />
+        </EntityType>
+        <EntityType Name="Days">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DayTime" Relationship="Self.FK_DayTime_Days" FromRole="Days" ToRole="DayTime" />
+        </EntityType>
+        <EntityType Name="DayTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTime" Type="Int32" Nullable="false" />
+          <Property Name="IdDay" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Days" Relationship="Self.FK_DayTime_Days" FromRole="DayTime" ToRole="Days" />
+          <NavigationProperty Name="Times" Relationship="Self.FK_DayTime_Times" FromRole="DayTime" ToRole="Times" />
+          <NavigationProperty Name="DoctorTime" Relationship="Self.FK_DoctorTime_DayTime" FromRole="DayTime" ToRole="DoctorTime" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdHospitals" Type="Int32" Nullable="false" />
+          <Property Name="IdProffessions" Type="Int32" Nullable="false" />
+          <Property Name="IdDoctorsTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hospitals" Relationship="Self.FK_Doctors_Hospitals" FromRole="Doctors" ToRole="Hospitals" />
+          <NavigationProperty Name="Proffessions" Relationship="Self.FK_Doctors_Proffessions" FromRole="Doctors" ToRole="Proffessions" />
+          <NavigationProperty Name="DoctorTime" Relationship="Self.FK_DoctorTime_Doctors" FromRole="Doctors" ToRole="DoctorTime" />
+        </EntityType>
+        <EntityType Name="DoctorTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDoctor" Type="Int32" Nullable="false" />
+          <Property Name="IdDayTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DayTime" Relationship="Self.FK_DoctorTime_DayTime" FromRole="DoctorTime" ToRole="DayTime" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_DoctorTime_Doctors" FromRole="DoctorTime" ToRole="Doctors" />
+          <NavigationProperty Name="Offers" Relationship="Self.FK_Offers_DoctorTime" FromRole="DoctorTime" ToRole="Offers" />
+        </EntityType>
+        <EntityType Name="Hospitals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Hospitals" FromRole="Hospitals" ToRole="Doctors" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdDoctorTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authorization" Relationship="Self.FK_Offers_Authorization" FromRole="Offers" ToRole="Authorization" />
+          <NavigationProperty Name="DoctorTime" Relationship="Self.FK_Offers_DoctorTime" FromRole="Offers" ToRole="DoctorTime" />
+        </EntityType>
+        <EntityType Name="Proffessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Proffessions" FromRole="Proffessions" ToRole="Doctors" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Times">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="DayTime" Relationship="Self.FK_DayTime_Times" FromRole="Times" ToRole="DayTime" />
+        </EntityType>
+        <Association Name="FK_Offers_Authorization">
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
+          <End Role="Offers" Type="Self.Offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offers">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DayTime_Days">
+          <End Role="Days" Type="Self.Days" Multiplicity="1" />
+          <End Role="DayTime" Type="Self.DayTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Days">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DayTime">
+              <PropertyRef Name="IdDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DayTime_Times">
+          <End Role="Times" Type="Self.Times" Multiplicity="1" />
+          <End Role="DayTime" Type="Self.DayTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Times">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DayTime">
+              <PropertyRef Name="IdTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorTime_DayTime">
+          <End Role="DayTime" Type="Self.DayTime" Multiplicity="1" />
+          <End Role="DoctorTime" Type="Self.DoctorTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorTime">
+              <PropertyRef Name="IdDayTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Hospitals">
+          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospitals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="IdHospitals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Proffessions">
+          <End Role="Proffessions" Type="Self.Proffessions" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proffessions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="IdProffessions" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorTime_Doctors">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="DoctorTime" Type="Self.DoctorTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorTime">
+              <PropertyRef Name="IdDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_DoctorTime">
+          <End Role="DoctorTime" Type="Self.DoctorTime" Multiplicity="1" />
+          <End Role="Offers" Type="Self.Offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offers">
+              <PropertyRef Name="IdDoctorTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="scheduleTicket" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" />
+          <EntitySet Name="Days" EntityType="Self.Days" />
+          <EntitySet Name="DayTime" EntityType="Self.DayTime" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+          <EntitySet Name="DoctorTime" EntityType="Self.DoctorTime" />
+          <EntitySet Name="Hospitals" EntityType="Self.Hospitals" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" />
+          <EntitySet Name="Proffessions" EntityType="Self.Proffessions" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Times" EntityType="Self.Times" />
+          <AssociationSet Name="FK_Offers_Authorization" Association="Self.FK_Offers_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Offers" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DayTime_Days" Association="Self.FK_DayTime_Days">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="DayTime" EntitySet="DayTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DayTime_Times" Association="Self.FK_DayTime_Times">
+            <End Role="Times" EntitySet="Times" />
+            <End Role="DayTime" EntitySet="DayTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorTime_DayTime" Association="Self.FK_DoctorTime_DayTime">
+            <End Role="DayTime" EntitySet="DayTime" />
+            <End Role="DoctorTime" EntitySet="DoctorTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Hospitals" Association="Self.FK_Doctors_Hospitals">
+            <End Role="Hospitals" EntitySet="Hospitals" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Proffessions" Association="Self.FK_Doctors_Proffessions">
+            <End Role="Proffessions" EntitySet="Proffessions" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorTime_Doctors" Association="Self.FK_DoctorTime_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="DoctorTime" EntitySet="DoctorTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_DoctorTime" Association="Self.FK_Offers_DoctorTime">
+            <End Role="DoctorTime" EntitySet="DoctorTime" />
+            <End Role="Offers" EntitySet="Offers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище scheduleTicketModelContainer" CdmEntityContainer="scheduleTicket">
+          <EntitySetMapping Name="Authorization">
+            <EntityTypeMapping TypeName="scheduleTicketModel.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Days">
+            <EntityTypeMapping TypeName="scheduleTicketModel.Days">
+              <MappingFragment StoreEntitySet="Days">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DayTime">
+            <EntityTypeMapping TypeName="scheduleTicketModel.DayTime">
+              <MappingFragment StoreEntitySet="DayTime">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdTime" ColumnName="IdTime" />
+                <ScalarProperty Name="IdDay" ColumnName="IdDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="scheduleTicketModel.Doctors">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdHospitals" ColumnName="IdHospitals" />
+                <ScalarProperty Name="IdProffessions" ColumnName="IdProffessions" />
+                <ScalarProperty Name="IdDoctorsTime" ColumnName="IdDoctorsTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorTime">
+            <EntityTypeMapping TypeName="scheduleTicketModel.DoctorTime">
+              <MappingFragment StoreEntitySet="DoctorTime">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+                <ScalarProperty Name="IdDayTime" ColumnName="IdDayTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hospitals">
+            <EntityTypeMapping TypeName="scheduleTicketModel.Hospitals">
+              <MappingFragment StoreEntitySet="Hospitals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="scheduleTicketModel.Offers">
+              <MappingFragment StoreEntitySet="Offers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdDoctorTime" ColumnName="IdDoctorTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proffessions">
+            <EntityTypeMapping TypeName="scheduleTicketModel.Proffessions">
+              <MappingFragment StoreEntitySet="Proffessions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="scheduleTicketModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Times">
+            <EntityTypeMapping TypeName="scheduleTicketModel.Times">
+              <MappingFragment StoreEntitySet="Times">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

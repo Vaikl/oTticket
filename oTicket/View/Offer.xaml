@@ -5,11 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:oTicket.View"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="350" d:DesignWidth="525"
       Title="Offer">
 
     <Grid Background="#FFFCF8F8" >
-        <ListView x:Name="ListView">
+        <TextBlock Text="Выберите" FontSize="23"/>
+        <TextBlock x:Name="TextValue" FontSize="23" Margin="108,0,53,264"/>
+        <ListView SelectionChanged="ListView_SelectionChanged" SelectionMode="Single" x:Name="ListView" Margin="0,36,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>

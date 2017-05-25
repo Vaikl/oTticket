@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13829a86286b4fc8b474d26a6a894d91" Name="Diagram1">
+        <EntityTypeShape EntityType="scheduleTicketModel.Authorization" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.Days" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.DayTime" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.Doctors" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.DoctorTime" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.Hospitals" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.Offers" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.Proffessions" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="scheduleTicketModel.Times" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="scheduleTicketModel.FK_Offers_Authorization" ManuallyRouted="false" />
+        <AssociationConnector Association="scheduleTicketModel.FK_DayTime_Days" ManuallyRouted="false" />
+        <AssociationConnector Association="scheduleTicketModel.FK_DayTime_Times" ManuallyRouted="false" />
+        <AssociationConnector Association="scheduleTicketModel.FK_DoctorTime_DayTime" ManuallyRouted="false" />
+        <AssociationConnector Association="scheduleTicketModel.FK_Doctors_Hospitals" ManuallyRouted="false" />
+        <AssociationConnector Association="scheduleTicketModel.FK_Doctors_Proffessions" ManuallyRouted="false" />
+        <AssociationConnector Association="scheduleTicketModel.FK_DoctorTime_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="scheduleTicketModel.FK_Offers_DoctorTime" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

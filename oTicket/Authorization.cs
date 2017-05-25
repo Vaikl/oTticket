@@ -17,7 +17,7 @@ namespace oTicket
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Authorization()
         {
-            this.Offer = new HashSet<Offer>();
+            this.Offers = new HashSet<Offers>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace oTicket
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Offer> Offer { get; set; }
+        public virtual ICollection<Offers> Offers { get; set; }
     }
 }
