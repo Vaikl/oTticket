@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="scheduleModel.Hospitals" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="scheduleModel.Offer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="scheduleModel.Proffessions" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="scheduleModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="scheduleModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="scheduleModel.Time" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
         <AssociationConnector Association="scheduleModel.FK_Offer_Authorization" ManuallyRouted="false" />
         <AssociationConnector Association="scheduleModel.FK_Offer_Doctors" ManuallyRouted="false" />
