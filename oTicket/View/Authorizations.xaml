@@ -1,0 +1,19 @@
+﻿<Page x:Class="oTicket.View.Authorizations"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:oTicket.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="525"
+      Title="Authorization">
+
+    <Grid Background="White" Height="350" Width="525" >
+     
+        <TextBlock Text="Номер студенческого билета:" FontSize="25" Margin="70,45,88.4,237.8"/>
+        <TextBlock Text="Пароль:" FontSize="25" Margin="205,132,217.4,149.8" />
+        <TextBox x:Name="NumberBox" Margin="143,88,159,218" Text="1234567" />
+        <TextBox x:Name="PasswordBox" Margin="143,171,159,135" Text="Admin"/>
+        <Button x:Name="Enter" Content="Войти" FontSize="23" Margin="178,236,196,62" Click="Enter_Click"/>
+    </Grid>
+</Page>

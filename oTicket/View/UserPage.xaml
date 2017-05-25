@@ -1,0 +1,14 @@
+﻿<Page x:Class="oTicket.View.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:oTicket.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="525"
+      Title="UserPage">
+
+    <Grid Background="#FFF9F9F9">
+        <Button x:Name="NewOffers" Margin="33,85,335.8,190.4" Content="Заказать Талон" Click="NewOffers_Click"/>
+    </Grid>
+</Page>
