@@ -23,7 +23,7 @@ namespace oTicket.View
         {
             InitializeComponent();
            //Проверим авторизацию
-           //выфальфытвадолвытафдолыатывфдолатадолывтадыволат
+           //Артем лох
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
