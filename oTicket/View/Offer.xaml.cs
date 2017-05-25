@@ -30,7 +30,7 @@ namespace oTicket.View
         {
             using (scheduleEntities db = new scheduleEntities())
             {
-                ListView.ItemsSource = db.Hospitals.ToList();
+                ListView.ItemsSource = db.Hospitals.ToList();//
             }
         }
     }
