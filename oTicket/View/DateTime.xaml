@@ -22,7 +22,7 @@
         <ListView x:Name="ListTime" SelectionChanged="ListView_SelectionChanged2" SelectionMode="Single" Margin="275,33,-0.2,0.4">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Time, StringFormat=''}"/>
+                    <TextBlock Text="{Binding Time}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
