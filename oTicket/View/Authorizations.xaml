@@ -9,11 +9,23 @@
       Title="Authorization">
 
     <Grid Background="White" Height="350" Width="525" >
-     
-        <TextBlock Text="Номер студенческого билета:" FontSize="25" Margin="70,45,88.4,237.8"/>
-        <TextBlock Text="Пароль:" FontSize="25" Margin="205,132,217.4,149.8" />
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Vaikl\Desktop\kursach\kurs3.jpg"></ImageBrush>
+            </Grid.Background>
+        </Grid>
+        <TextBlock  Text="Номер студенческого билета:" FontSize="25" Margin="70,45,89,262">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBlock Text="Пароль:" FontSize="25" Margin="205,132,227,179" />
         <TextBox x:Name="NumberBox" Margin="143,88,159,218" Text="1234567" />
         <TextBox x:Name="PasswordBox" Margin="143,171,159,135" Text="1234567"/>
-        <Button x:Name="Enter" Content="Войти" FontSize="23" Margin="178,236,196,62" Click="Enter_Click"/>
+        <Button x:Name="Enter" Content="Войти" FontSize="23" OpacityMask="White" BorderBrush="Black" Foreground="White" HorizontalAlignment="Left" Background="#FFBD2A2A" Opacity="0.85" Margin="205,236,0,62" Click="Enter_Click" Width="93">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="7"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Page>

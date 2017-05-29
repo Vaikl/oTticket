@@ -8,8 +8,8 @@
       d:DesignHeight="350" d:DesignWidth="525"
       Title="DateTime">
 
-    <Grid Background="#FFFDFCFC" >
-        <TextBlock Text="День" FontSize="25" Margin="84,0,373.8,317.4" />
+    <Grid Background="#FFFDFCFC" Height="350" Width="525" >
+        <TextBlock Text="День" FontSize="24" Margin="84,0,373.8,317.4" />
         <ListView x:Name="ListDay" SelectionChanged="ListView_SelectionChanged" SelectionMode="Single" Margin="0,33,274.8,0.4">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -18,7 +18,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <TextBlock Text="Время" FontSize="25" Margin="365,0,92.8,317.4" />
+        <TextBlock Text="Время" FontSize="24" Margin="365,0,92.8,317.4" />
         <ListView x:Name="ListTime" SelectionChanged="ListView_SelectionChanged2" SelectionMode="Single" Margin="275,33,-0.2,0.4">
             <ListView.ItemTemplate>
                 <DataTemplate>

@@ -5,10 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:oTicket.View"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="525"
+      d:DesignHeight="350" d:DesignWidth="525" MinHeight="350" MinWidth="525"
       Title="UserPage">
 
     <Grid Background="#FFF9F9F9">
-        <Button x:Name="NewOffers" Margin="33,85,335.8,190.4" Content="Заказать Талон" Click="NewOffers_Click"/>
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Vaikl\Desktop\kurs.png"></ImageBrush>
+            </Grid.Background>
+        </Grid>
+        <Button x:Name="NewOffers" FontSize="20" OpacityMask="White" BorderBrush="Black" Foreground="White" HorizontalAlignment="Left" Background="#FFBD2A2A" Opacity="0.85" Margin="242,28,0,254.4" Content="Заказать Талон" Click="NewOffers_Click" Width="207">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="7"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Page>
