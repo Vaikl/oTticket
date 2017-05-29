@@ -11,7 +11,7 @@
     <Grid Background="#FFF9F9F9">
         <Grid>
             <Grid.Background>
-                <ImageBrush ImageSource="C:\Users\Vaikl\Desktop\kurs.png"></ImageBrush>
+                <ImageBrush ImageSource="kurs.png"></ImageBrush>
             </Grid.Background>
         </Grid>
         <Button x:Name="NewOffers" FontSize="20" OpacityMask="White" BorderBrush="Black" Foreground="White" HorizontalAlignment="Left" Background="#FFBD2A2A" Opacity="0.85" Margin="242,28,0,254.4" Content="Заказать Талон" Click="NewOffers_Click" Width="207">

@@ -11,7 +11,7 @@
     <Grid Background="White" Height="350" Width="525" >
         <Grid>
             <Grid.Background>
-                <ImageBrush ImageSource="C:\Users\Vaikl\Desktop\kursach\kurs3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="kurs3.jpg"></ImageBrush>
             </Grid.Background>
         </Grid>
         <TextBlock  Text="Номер студенческого билета:" FontSize="25" Margin="70,45,89,262">
