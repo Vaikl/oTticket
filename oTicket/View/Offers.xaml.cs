@@ -18,13 +18,13 @@ namespace oTicket.View
     /// <summary>
     /// Логика взаимодействия для Offer.xaml
     /// </summary>
-    public partial class Offer : Page
+    public partial class Offers : Page
     {
         int value; // счетчик нажатия на элемент ListView
         int IdHospitals; // получает ид выбранной поликлиники
-        int IdProffessions; // получает ид выбранной професии
-        int IdDoctors; // получает ид выбранного доктора
-        public Offer()
+       int IdProffessions; // получает ид выбранной професии
+        public static int IdDoctors; // получает ид выбранного доктора
+        public Offers()
         {
             InitializeComponent();
             this.Loaded += offers_Loaded;
@@ -35,12 +35,15 @@ namespace oTicket.View
         {
             using (scheduleTicket db = new scheduleTicket())
             {
+
                 ListView.ItemsSource = db.Hospitals.ToList();
             }
+            TextValue.Text = "поликлинку";
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { 
+            
             using (scheduleTicket db = new scheduleTicket())
             {
              
@@ -51,7 +54,7 @@ namespace oTicket.View
                         {
                             IdHospitals = item.Id;
                         }
-                        TextValue.Text = IdHospitals.ToString();
+                        TextValue.Text = "врача";
                         ListView.ItemsSource = db.Proffessions.ToList();
                         value += 1;
                         break;
@@ -60,10 +63,15 @@ namespace oTicket.View
                         {
                             IdProffessions = item.Id;
                         }
+                        TextValue.Text = "врача";
                         ListView.ItemsSource = db.Doctors.Where(x => x.IdHospitals == IdHospitals && x.IdProffessions == IdProffessions).ToList();
                         value += 1;
                         break;
                     case 5:
+                        foreach (Doctors item in e.AddedItems)
+                        {
+                            IdDoctors = item.Id;
+                        }
                         MainWindow.Naviget = new DateTime();
                         break;
                 }

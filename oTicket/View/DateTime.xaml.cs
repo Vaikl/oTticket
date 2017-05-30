@@ -20,7 +20,8 @@ namespace oTicket.View
     /// </summary>
     public partial class DateTime : Page
     {
-        int IdDate; //получаем ид даты
+       static int IdDate; //получаем ид даты
+       static int IdTime; //получаем ид время
         public DateTime()
         {
             InitializeComponent();
@@ -29,14 +30,16 @@ namespace oTicket.View
 
         private void DateTime_Loaded(object sender, RoutedEventArgs e)
         {
+          
             using (scheduleTicket db = new scheduleTicket())
             {
-                ListDay.ItemsSource = db.Days.ToList();
+               ListDay.ItemsSource = db.Days.ToList();  
             }
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ListTime.Items.Clear();
             using (scheduleTicket db = new scheduleTicket())
             {
                 foreach (Days item in e.AddedItems)
@@ -44,13 +47,32 @@ namespace oTicket.View
                     IdDate = item.Id;
                 }
 
-                ListTime.ItemsSource = db.Times.ToList();
+                foreach (Times item in db.Times)
+                {
+                        if ( item.Offer.Select(x=>x.IdDays).Contains(IdDate) == false || item.Offer.Select(x => x.IdDoctors).Contains(Offers.IdDoctors) == false)
+                            ListTime.Items.Add(item);
+                }
+               
             }
         }
 
         private void ListView_SelectionChanged2(object sender, SelectionChangedEventArgs e)
         {
-
+            using (scheduleTicket db = new scheduleTicket())
+            {
+                foreach (Times item in e.AddedItems)
+                {
+                    IdTime = item.Id;
+                }
+                db.Offer.Add(new Offer {
+                    IdUser = Authorizations.IdUser,
+                    IdDoctors = Offers.IdDoctors,
+                    IdDays = DateTime.IdDate,
+                    IdTime = DateTime.IdTime});
+                db.SaveChanges();
+                MainWindow.Naviget = new UserPage();
+                MessageBox.Show("Талон заказан");
+            }
         }
     }
 }

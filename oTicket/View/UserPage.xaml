@@ -10,11 +10,16 @@
 
     <Grid Background="#FFF9F9F9">
         <Grid>
-            <Grid.Background>
+           <!-- <Grid.Background>
                 <ImageBrush ImageSource="kurs.png"></ImageBrush>
-            </Grid.Background>
+            </Grid.Background>-->
         </Grid>
-        <Button x:Name="NewOffers" FontSize="20" OpacityMask="White" BorderBrush="Black" Foreground="White" HorizontalAlignment="Left" Background="#FFBD2A2A" Opacity="0.85" Margin="242,28,0,254.4" Content="Заказать Талон" Click="NewOffers_Click" Width="207">
+        <Button x:Name="NewOffers" FontSize="20" OpacityMask="White" BorderBrush="Black" Foreground="White" HorizontalAlignment="Left" Background="#FFBD2A2A" Opacity="0.85" Margin="255,28,0,254.4" Content="Заказать Талон" Click="NewOffers_Click" Width="207">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="7"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="MyOffers" FontSize="20" OpacityMask="White" BorderBrush="Black" Foreground="White" HorizontalAlignment="Left" Background="#FFBD2A2A" Opacity="0.85" Margin="18,28,0,254.4" Content="Просмотреть заказы" Click="MyOffers_Click" Width="207">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="7"/>
             </Button.Effect>

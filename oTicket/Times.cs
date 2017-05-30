@@ -17,13 +17,13 @@ namespace oTicket
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Times()
         {
-            this.DayTime = new HashSet<DayTime>();
+            this.Offer = new HashSet<Offer>();
         }
     
         public int Id { get; set; }
         public System.TimeSpan Time { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DayTime> DayTime { get; set; }
+        public virtual ICollection<Offer> Offer { get; set; }
     }
 }

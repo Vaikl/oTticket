@@ -72,19 +72,13 @@
     <Compile Include="Days.cs">
       <DependentUpon>scheduleTicket.tt</DependentUpon>
     </Compile>
-    <Compile Include="DayTime.cs">
-      <DependentUpon>scheduleTicket.tt</DependentUpon>
-    </Compile>
     <Compile Include="Doctors.cs">
-      <DependentUpon>scheduleTicket.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DoctorTime.cs">
       <DependentUpon>scheduleTicket.tt</DependentUpon>
     </Compile>
     <Compile Include="Hospitals.cs">
       <DependentUpon>scheduleTicket.tt</DependentUpon>
     </Compile>
-    <Compile Include="Offers.cs">
+    <Compile Include="Offer.cs">
       <DependentUpon>scheduleTicket.tt</DependentUpon>
     </Compile>
     <Compile Include="Proffessions.cs">
@@ -117,8 +111,11 @@
     <Compile Include="View\DateTime.xaml.cs">
       <DependentUpon>DateTime.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Offer.xaml.cs">
-      <DependentUpon>Offer.xaml</DependentUpon>
+    <Compile Include="View\MyOffers.xaml.cs">
+      <DependentUpon>MyOffers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Offers.xaml.cs">
+      <DependentUpon>Offers.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
@@ -143,7 +140,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Offer.xaml">
+    <Page Include="View\MyOffers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Offers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

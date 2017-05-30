@@ -27,7 +27,12 @@ namespace oTicket.View
 
         private void NewOffers_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Naviget = new Offer();
+            MainWindow.Naviget = new Offers();
+        }
+
+        private void MyOffers_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Naviget = new MyOffers();
         }
     }
 }

@@ -17,18 +17,17 @@ namespace oTicket
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Doctors()
         {
-            this.DoctorTime = new HashSet<DoctorTime>();
+            this.Offer = new HashSet<Offer>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public int IdHospitals { get; set; }
         public int IdProffessions { get; set; }
-        public int IdDoctorsTime { get; set; }
     
         public virtual Hospitals Hospitals { get; set; }
         public virtual Proffessions Proffessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DoctorTime> DoctorTime { get; set; }
+        public virtual ICollection<Offer> Offer { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace oTicket.View
     /// </summary>
     public partial class Authorizations : Page
     {
+      public  static int IdUser;
         public Authorizations()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace oTicket.View
                     {
                         if (item.Number == Convert.ToInt32(NumberBox.Text) && item.Password == PasswordBox.Text)
                         {
+                            IdUser = item.Id;
                              MainWindow.Naviget = new UserPage();  
                         }
                     }

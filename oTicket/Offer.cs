@@ -11,22 +11,20 @@ namespace oTicket
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class DayTime
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Offer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DayTime()
-        {
-            this.DoctorTime = new HashSet<DoctorTime>();
-        }
-    
+        [Key]
         public int Id { get; set; }
+        public int IdUser { get; set; }
+        public int IdDoctors { get; set; }
+        public int IdDays { get; set; }
         public int IdTime { get; set; }
-        public int IdDay { get; set; }
     
+        public virtual Authorization Authorization { get; set; }
         public virtual Days Days { get; set; }
+        public virtual Doctors Doctors { get; set; }
         public virtual Times Times { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DoctorTime> DoctorTime { get; set; }
     }
 }
